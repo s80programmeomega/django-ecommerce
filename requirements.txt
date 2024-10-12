@@ -1,2 +1,4 @@
 django
 python-dotenv
+mypy
+pillow
