@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+from django.contrib import messages
 import os
 from pathlib import Path
 import dotenv
@@ -46,6 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # For the humanize feature
+    'django.contrib.humanize',
     # Custom
     'store',
 ]
@@ -136,3 +140,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+print(f"Before ==> {messages.DEFAULT_LEVELS}")
+print(f"Before ==> {messages.DEFAULT_TAGS}")
+print(messages)
+#Custom message tags for bootstrap style
+MESSAGE_TAGS = {
+    messages.DEBUG: 'primary',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',
+}
+print(f"After ==> {MESSAGE_TAGS}")

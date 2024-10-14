@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Logout
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-around">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 py-5">
+            <h5 class="text-center">
+                You have been logged out!
+            </h5>
+            <p class="p-5 text-center">
+                <a href='{% url "store:login" %}'>Login again!</a>
+            </p>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{% endblock content %}

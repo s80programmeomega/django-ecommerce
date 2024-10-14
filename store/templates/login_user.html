@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+About Page
+{% endblock title %}
+
+{% block header %}
+<!-- Header-->
+{% include 'header.html' %}
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-evenly">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 border-danger shadow py-5">
+            <form method="POST" action='{% url "store:login" %}' class="p-5">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username" placeholder="Enter your username"
+                        id="username">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Enter your password" id="password">
+                </div>
+                <br>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-secondary">Login</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+{% endblock content %}

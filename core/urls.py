@@ -21,7 +21,7 @@ from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("store/", include('store.urls')),
+    path("store/", include('store.urls', namespace="store")),
 ]
 
 if settings.DEBUG:

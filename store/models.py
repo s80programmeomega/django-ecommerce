@@ -33,6 +33,16 @@ class Product(models.Model):
 
     date_added = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
+    
+    #Sale stuff
+    on_sale = models.BooleanField(default=False)
+    sale_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
+    # Handle requests to image url
+    def get_image_url(self):
+        if self.image:
+            return self.image.url
+        return '/media/default/products/default_product.jpg'
 
     class Meta:
         ordering = ["-id"]
@@ -82,7 +92,7 @@ class Order(models.Model):
     address = models.CharField(max_length=100, default="", blank=True)
     phone = models.CharField(max_length=15)
     status = models.CharField(
-        max_length=10, choices=OrderStatus.choices, default=OrderStatus.PENDING)
+        max_length=10, choices=OrderStatus.choices, default=OrderStatus.PENDING,)
     date = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
 
