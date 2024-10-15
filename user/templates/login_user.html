@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-About Page
+Login Page
 {% endblock title %}
 
 {% block header %}
@@ -14,7 +14,7 @@ About Page
     <div class="row justify-content-evenly">
         <div class="col-md-3"></div>
         <div class="col-md-6 border-danger shadow py-5">
-            <form method="POST" action='{% url "store:login" %}' class="p-5">
+            <form method="POST" action='{% url "user:login" %}' class="p-5">
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>

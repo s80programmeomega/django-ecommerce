@@ -2,3 +2,5 @@ django
 python-dotenv
 mypy
 pillow
+django-crispy-forms
+crispy-bootstrap5

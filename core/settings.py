@@ -52,6 +52,9 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     # Custom
     'store',
+    'user',
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -154,3 +157,8 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 print(f"After ==> {MESSAGE_TAGS}")
+
+#Django-crispy-forms settings
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"

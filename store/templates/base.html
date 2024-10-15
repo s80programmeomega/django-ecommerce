@@ -18,29 +18,36 @@
 <body>
     <!-- Navigation-->
     {% include "navbar.html" %}
-    
+    <!-- End navigations -->
+
     <!-- Messages -->
     {% for message in messages %}
-    <div class=" alert alert-dismissible fade show auto-dismiss alert-{{ message.tags }} text-center mb-2" role="alert">
-        {{ message }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="container sticky-top">
+        <div class=" alert alert-dismissible fade show auto-dismiss alert-{{ message.tags }} text-center mb-2" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
     
     <script>
         document.querySelectorAll('.auto-dismiss').forEach(div => {
             setTimeout(() => div.closest('.alert').remove(), 7000);
         });
     </script>
+    <!-- End messages -->
     
     <!-- Header -->
     {% block header %} {% endblock header %}
+    <!-- End header -->
     
     <!-- Content-->
     {% block content %} {% endblock content %}
+    <!-- End content -->
 
     <!-- Footer-->
     {% include "footer.html" %}
+    <!-- End footer -->
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

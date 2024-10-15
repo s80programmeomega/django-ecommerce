@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from django.db.models.enums import TextChoices
 
@@ -40,8 +41,9 @@ class Product(models.Model):
 
     # Handle requests to image url
     def get_image_url(self):
-        if self.image:
-            return self.image.url
+        if self.image and hasattr(self.image, 'url'):
+            if os.path.exists(self.image.url):
+                return self.image.url
         return '/media/default/products/default_product.jpg'
 
     class Meta:
