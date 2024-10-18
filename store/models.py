@@ -1,6 +1,7 @@
 import os
 from django.db import models
 from django.db.models.enums import TextChoices
+from django.conf import settings
 
 
 # Categories of products
@@ -34,16 +35,23 @@ class Product(models.Model):
 
     date_added = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
-    
+
     #Sale stuff
     on_sale = models.BooleanField(default=False)
     sale_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     # Handle requests to image url
     def get_image_url(self):
+        # if there is an image with a url
         if self.image and hasattr(self.image, 'url'):
-            if os.path.exists(self.image.url):
+            # if the url contains a file, return its path
+            if os.path.isfile(f"{settings.BASE_DIR}{self.image.url}"):
+                print(f"isfile ==> {self.image.url}\n")
                 return self.image.url
+            else:
+                print(f"Image file does not exists: {self.image.url}")
+                print("Using default image: /media/default/products/default_product.jp")
+
         return '/media/default/products/default_product.jpg'
 
     class Meta:

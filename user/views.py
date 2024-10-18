@@ -10,9 +10,11 @@ def register_user(request: HttpRequest):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request=request, message="Your registration was successful. You can login now!")
-            # Redirect to home after successful registration
+            messages.success(
+                request=request, message="Your registration was successful. You can login now!")
             return redirect('user:login')
+        else:
+            messages.error(request=request, message="Registration failed!")
     else:
         form = RegistrationForm()
     return render(request, 'register_user.html', {'form': form})
@@ -34,7 +36,7 @@ def login_user(request: HttpRequest):
         else:
             messages.error(
                 request, "Fail to login. Invalid username or password!")
-            return redirect("store:login")
+            return redirect("user:login")
     return render(request=request, template_name="login_user.html", context={"header": header})
 
 

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}
+    Product Details
+{% endblock title %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="card mb-3 px-md-5 px-1">
+            <div class="row g-md-1 g-0">
+                <div class="col-md-5">
+                    <a href="{{product.get_image_url}}" target="_blank">
+                        <img src="{{product.get_image_url}}" class="img-fluid" alt="{{product.name}}">
+                    </a>
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h5 class="card-title">{{product.name |title}}</h5>
+                            <p class="card-text">
+                                {{product.description}}
+                            </p>
+                            <p class="card-text">
+                                <small class="text-body-secondary">Last updated {{product.last_modified|naturaltime}}</small>
+                            </p>
+                            {% if product.on_sale %}
+                                <div class="text-warning">
+                                    &starf;&starf; Sale &starf;&starf;
+                                </div>
+                                <br>
+                                <strong class="text-decoration-line-through">
+                                    ${{product.price | intcomma}}
+                                </strong>&NonBreakingSpace;
+                                <strong class="">
+                                    ${{product.sale_price | intcomma}}
+                                </strong>
+                            {% else %}
+                                <strong class="">
+                                    ${{product.sale_price | intcomma}}
+                                </strong>
+                            {% endif %}
+                        </>
+                        <div class="row justify-content-around py-5">
+                            <div class="col">
+                                <a href='{% url "store:home" %}' class="btn btn-secondary">Back to Store</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
