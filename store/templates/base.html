@@ -38,7 +38,9 @@
     <!-- End messages -->
     
     <!-- Header -->
-    {% block header %} {% endblock header %}
+     {% if header %}
+        {% block header %} {% endblock header %}
+     {% endif %}
     <!-- End header -->
     
     <!-- Content-->

@@ -34,9 +34,11 @@
                             <!-- Product name-->
                             <h5 class="fw-bolder">{{p.name | title}}</h5>
                             <!-- Product price-->
-                            <strong class="text-decoration-line-through">
-                                ${{p.price | intcomma}}
-                            </strong>&NonBreakingSpace;
+                             {% if p.price > p.sale_price %}
+                             <strong class="text-decoration-line-through">
+                                 ${{p.price | intcomma}}
+                             </strong>&NonBreakingSpace;
+                             {% endif %}
                             <strong class="">
                                 ${{p.sale_price | intcomma}}
                             </strong>

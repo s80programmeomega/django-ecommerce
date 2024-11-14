@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class RegistrationForm(UserCreationForm):
-    
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username',]
 

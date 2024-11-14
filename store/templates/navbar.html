@@ -16,8 +16,9 @@
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                        {% for category in categories %}
+                        <li><a class="dropdown-item" href={% url "store:product_category" category.name %} >{{category.name}}</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
                 {% if user.is_authenticated %}
